@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 // index.js or main.jsx
+
+import HandTracker from './HandTracker.js'; 
 //import './input.css';  // Tailwind CSS imported here
 
 import { useState } from 'react';
@@ -27,6 +29,9 @@ function App() {
   // const [value,setvalue] = useState(90)
   return (
     <div className="App ">
+<HandTracker />
+
+
       <Mercury/>
       <Venus/>
       <Earth/>
@@ -36,6 +41,11 @@ function App() {
       <Saturn/>
       <Uranus/>
       <Neptune/>
+
+
+      <div className="video">
+        <video id='videoElement' autoPlay playsInline></video>
+      </div>
     </div>
   );
 }
