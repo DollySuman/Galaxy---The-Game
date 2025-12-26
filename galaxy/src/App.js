@@ -1,8 +1,9 @@
 import logo from './logo.svg';
+import { useRef } from 'react';
 import './App.css';
 // index.js or main.jsx
+import './logic.jsx'
 
-import HandTracker from './HandTracker.js'; 
 //import './input.css';  // Tailwind CSS imported here
 
 import { useState } from 'react';
@@ -29,7 +30,6 @@ function App() {
   // const [value,setvalue] = useState(90)
   return (
     <div className="App ">
-<HandTracker />
 
 
       <Mercury/>

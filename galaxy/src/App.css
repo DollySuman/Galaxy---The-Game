@@ -10,6 +10,22 @@
 .App{
     display: flex;
     flex-wrap: wrap;
+    gap: 30px;
+}
+
+.rotate{
+    animation: revolve 15s linear 1s infinite forwards ;
+
+}
+
+@keyframes revolve {
+    from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+    
 }
 
 
