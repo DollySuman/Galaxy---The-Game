@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import { useRef } from 'react';
 import './App.css';
 // index.js or main.jsx
-import './logic.jsx'
+// import './logic.jsx'
 
 //import './input.css';  // Tailwind CSS imported here
 
@@ -25,6 +25,7 @@ import Jupiter from './components/Jupiter';
 import './components/Jupiter.css'
 import Saturn from './components/Saturn';
 import './components/Saturn.css'
+import HandDetection from './handTrack';
 
 function App() {
   // const [value,setvalue] = useState(90)
@@ -41,11 +42,8 @@ function App() {
       <Saturn/>
       <Uranus/>
       <Neptune/>
+      <HandDetection/>
 
-
-      <div className="video">
-        <video id='videoElement' autoPlay playsInline></video>
-      </div>
     </div>
   );
 }
