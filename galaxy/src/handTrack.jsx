@@ -1,11 +1,12 @@
 import React from "react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Hands } from "@mediapipe/hands";
 import { Camera } from "@mediapipe/camera_utils";
 
-const HandDetection = () => {
+const HandDetection = ({onHandMove}) => {
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
+    const [handCoordinates, setHandCoordinates] = useState(null)
 
     useEffect(() => {
         const hands = new Hands({
@@ -31,8 +32,27 @@ const HandDetection = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(results.image, 0, 0, canvas.width, canvas.height);
             
-            if (results.multiHandLandmarks) {
-                console.log("Hands detected", results.multiHandLandmarks);
+            if (results.multiHandLandmarks && results.multiHandLandmarks[0]) {
+                 const landmarks = results.multiHandLandmarks[0]; 
+                 if(landmarks.length > 8){
+
+                     const indexTip = landmarks[8]
+                     const coordinates = {
+                         wrist: {x: landmarks[0].x * 640, y: landmarks[0].y*480},
+                         index: {x: indexTip.x * 640, y: indexTip.y*480}
+                        }
+                        
+                        setHandCoordinates(coordinates)
+                        console.log(coordinates)
+                        
+                        onHandMove({
+                            x: indexTip.x * window.innerWidth,
+                            y: indexTip.y * window.innerHeight
+                        })
+                    }
+            } else{
+                setHandCoordinates(null);
+                onHandMove({x:-100,y:-100})
             }
             ctx.restore();
         });
@@ -53,7 +73,21 @@ const HandDetection = () => {
     return (
         <div>
             <video ref={videoRef} style={{ display: 'none' }} autoPlay playsInline />
-            <canvas ref={canvasRef} width={640} height={480} />
+            <canvas ref={canvasRef} width={640} height={480} style={{
+                position: 'fixed',
+                top:10,
+                right:10,
+                width: '200px',
+                height: '150px'
+            }} />
+
+            {handCoordinates && (
+                <div style={{color: 'white',marginTop:'10px'}}>
+                    <p>Wrist: x = {Math.round(handCoordinates.wrist.x)}, y = {Math.round(handCoordinates.wrist.y)}</p>
+                    <p>Index: x = {Math.round(handCoordinates.index.x)}, y = {Math.round(handCoordinates.index.y)}</p>
+
+                    </div>
+            )}
         </div>
     );
 }

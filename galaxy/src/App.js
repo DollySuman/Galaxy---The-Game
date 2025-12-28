@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import './App.css';
 // index.js or main.jsx
 // import './logic.jsx'
+import './handTrack.jsx'
 
 //import './input.css';  // Tailwind CSS imported here
 
@@ -29,8 +30,24 @@ import HandDetection from './handTrack';
 
 function App() {
   // const [value,setvalue] = useState(90)
+  const [handPos, setHandPos] = useState({x:0, y:0})
   return (
     <div className="App ">
+
+      <HandDetection onHandMove= {setHandPos}/>
+      <div style={{
+        position: 'fixed',
+        left: handPos.x,
+        top: handPos.y,
+        width: '30px',
+        height: '30px',
+        background: 'red',
+        borderRadius: '59%',
+        pointerEvents: 'none',
+        transform: 'translate(-5%,-5%)',
+        zIndex: 9999
+        
+        }}/>
 
 
       <Mercury/>
@@ -42,9 +59,9 @@ function App() {
       <Saturn/>
       <Uranus/>
       <Neptune/>
-      <HandDetection/>
 
-    </div>
+      </div>
+    
   );
 }
 
