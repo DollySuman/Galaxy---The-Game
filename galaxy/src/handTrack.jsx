@@ -37,9 +37,11 @@ const HandDetection = ({onHandMove}) => {
                  if(landmarks.length > 8){
 
                      const indexTip = landmarks[8]
+                     const thumbTip = landmarks[4]
                      const coordinates = {
                          wrist: {x: landmarks[0].x * 640, y: landmarks[0].y*480},
-                         index: {x: indexTip.x * 640, y: indexTip.y*480}
+                         index: {x: indexTip.x * 640, y: indexTip.y*480},
+                         thumb: {x: thumbTip.x*640, y: thumbTip.y*480}
                         }
                         
                         setHandCoordinates(coordinates)
@@ -49,6 +51,14 @@ const HandDetection = ({onHandMove}) => {
                             x: indexTip.x * window.innerWidth,
                             y: indexTip.y * window.innerHeight
                         })
+
+                        const dx = thumbTip.x - indexTip.x;
+                        const dy = thumbTip.y - indexTip.y;
+                        const dist = (dx*dx) + (dy*dy)
+                        const pinch = Math.sqrt(dist)
+                        if(pinch<= 0.05){
+                            console.log("Pinching")
+                        }
                     }
             } else{
                 setHandCoordinates(null);
@@ -75,19 +85,19 @@ const HandDetection = ({onHandMove}) => {
             <video ref={videoRef} style={{ display: 'none' }} autoPlay playsInline />
             <canvas ref={canvasRef} width={640} height={480} style={{
                 position: 'fixed',
-                top:10,
+                bottom:10,
                 right:10,
                 width: '200px',
                 height: '150px'
             }} />
 
-            {handCoordinates && (
+            {/* {handCoordinates && (
                 <div style={{color: 'white',marginTop:'10px'}}>
                     <p>Wrist: x = {Math.round(handCoordinates.wrist.x)}, y = {Math.round(handCoordinates.wrist.y)}</p>
                     <p>Index: x = {Math.round(handCoordinates.index.x)}, y = {Math.round(handCoordinates.index.y)}</p>
 
                     </div>
-            )}
+            )} */}
         </div>
     );
 }
