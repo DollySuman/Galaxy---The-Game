@@ -57,7 +57,8 @@ const HandDetection = ({onHandMove}) => {
                         const dist = (dx*dx) + (dy*dy)
                         const pinch = Math.sqrt(dist)
                         if(pinch<= 0.05){
-                            console.log("Pinching")
+                            console.log("Pinch")
+                            //how to select???
                         }
                     }
             } else{
