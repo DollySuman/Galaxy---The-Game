@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Hands } from "@mediapipe/hands";
 import { Camera } from "@mediapipe/camera_utils";
 
-const HandDetection = ({onHandMove}) => {
+const HandDetection = ({onHandMove, onPinchChange}) => {
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
     const [handCoordinates, setHandCoordinates] = useState(null)
@@ -44,8 +44,7 @@ const HandDetection = ({onHandMove}) => {
                          thumb: {x: thumbTip.x*640, y: thumbTip.y*480}
                         }
                         
-                        setHandCoordinates(coordinates)
-                        console.log(coordinates)
+                        
                         
                         onHandMove({
                             x: indexTip.x * window.innerWidth,
@@ -57,13 +56,16 @@ const HandDetection = ({onHandMove}) => {
                         const dist = (dx*dx) + (dy*dy)
                         const pinch = Math.sqrt(dist)
                         if(pinch<= 0.05){
-                            console.log("Pinch")
-                            //how to select???
+                            onPinchChange(true)
+
+                        } else{
+                            onPinchChange(false)
                         }
                     }
             } else{
                 setHandCoordinates(null);
                 onHandMove({x:-100,y:-100})
+                onPinchChange(false)
             }
             ctx.restore();
         });

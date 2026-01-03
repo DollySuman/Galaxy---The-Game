@@ -31,10 +31,15 @@ import HandDetection from './handTrack';
 function App() {
   // const [value,setvalue] = useState(90)
   const [handPos, setHandPos] = useState({x:0, y:0})
+  const [isPinching, setIsPinching] = useState(false);
+  const [selectedPlanet, setSelectedPlanet] = useState(null)
+  const [dragOffset, setDragOffset] = useState({x:0,y:0})
+
   return (
     <div className="App ">
 
-      <HandDetection onHandMove= {setHandPos}/>
+      <HandDetection onHandMove= {setHandPos}
+      onPinchChange = {setIsPinching}/>
       <div style={{
         position: 'fixed',
         left: handPos.x,
@@ -42,23 +47,96 @@ function App() {
         width: '30px',
         height: '30px',
         background: 'red',
-        borderRadius: '59%',
+        borderRadius: '50%',
         pointerEvents: 'none',
-        transform: 'translate(-5%,-5%)',
+        transform: 'translate(-50%,-50%)',
         zIndex: 9999
         
         }}/>
 
 
-      <Mercury/>
-      <Venus/>
-      <Earth/>
-      <Mars/>
-      <Sun/>
-      <Jupiter/>
-      <Saturn/>
-      <Uranus/>
-      <Neptune/>
+      <Mercury
+      handPos = {handPos}
+      isPinching = {isPinching}
+      selectedPlanet = {selectedPlanet}
+      setSelectedPlanet={setSelectedPlanet}
+      planetId = "mercury"
+      dragOffset = {dragOffset}
+      setDragOffset = {setDragOffset}
+      />
+      <Venus
+      handPos = {handPos}
+      isPinching = {isPinching}
+      selectedPlanet = {selectedPlanet}
+     setSelectedPlanet={setSelectedPlanet} 
+      planetId = "venus"
+      dragOffset = {dragOffset}
+      setDragOffset = {setDragOffset}
+      />
+      <Earth
+      handPos = {handPos}
+      isPinching = {isPinching}
+      selectedPlanet = {selectedPlanet}
+      setSelectedPlanet={setSelectedPlanet}
+      planetId = "earth"
+      dragOffset = {dragOffset}
+      setDragOffset = {setDragOffset}
+      />
+      <Mars
+      handPos = {handPos}
+      isPinching = {isPinching}
+      selectedPlanet = {selectedPlanet}
+      setSelectedPlanet={setSelectedPlanet}
+      planetId = "mars"
+      dragOffset = {dragOffset}
+      setDragOffset = {setDragOffset}
+      />
+      <Sun
+      handPos = {handPos}
+      isPinching = {isPinching}
+      selectedPlanet = {selectedPlanet}
+      setSelectedPlanet={setSelectedPlanet}
+      planetId = "sun"
+      dragOffset = {dragOffset}
+      setDragOffset = {setDragOffset}
+      />
+      <Jupiter
+      handPos = {handPos}
+      isPinching = {isPinching}
+      selectedPlanet = {selectedPlanet}
+      setSelectedPlanet={setSelectedPlanet}
+      planetId = "jupiter"
+      dragOffset = {dragOffset}
+      setDragOffset = {setDragOffset}
+      />
+      <Saturn
+      handPos = {handPos}
+      isPinching = {isPinching}
+      selectedPlanet = {selectedPlanet}
+      setSelectedPlanet={setSelectedPlanet}
+      planetId = "saturn"
+      dragOffset = {dragOffset}
+      setDragOffset = {setDragOffset}
+      />
+      <Uranus
+      handPos = {handPos}
+      isPinching = {isPinching}
+      selectedPlanet = {selectedPlanet}
+      setSelectedPlanet={setSelectedPlanet}
+      planetId = "uranus"
+      dragOffset = {dragOffset}
+      setDragOffset = {setDragOffset}
+      />
+      <Neptune
+      handPos = {handPos}
+      isPinching = {isPinching}
+      selectedPlanet = {selectedPlanet}
+      setSelectedPlanet = {setSelectedPlanet}
+      planetId = "neptune"
+      dragOffset = {dragOffset}
+      setDragOffset = {setDragOffset}
+      />
+      
 
       </div>
     
