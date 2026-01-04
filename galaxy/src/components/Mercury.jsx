@@ -1,16 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react'
 
-// const Mercury = () => {
-//   return (
-//     <div>
-//       <div className="mercury rotate">
-//         <img className='mercuryimg' src="https://cdn.mos.cms.futurecdn.net/QHvQLhnFjrD6RgWgyZSHRn.jpg" alt="" />
-//       </div>
-//     </div>
-//   )
-// }
-
-// export default Mercury
 
 const Mercury = ({handPos, isPinching,selectedPlanet,setSelectedPlanet,planetId,dragOffset,setDragOffset}) => {
   const [position,setPosition] = useState({x: window.innerWidth/2, y:window.innerHeight/2})

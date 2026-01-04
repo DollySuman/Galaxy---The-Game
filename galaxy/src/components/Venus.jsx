@@ -63,3 +63,4 @@ const Venus = ({handPos, isPinching,selectedPlanet,setSelectedPlanet,planetId,dr
 
 
 export default Venus
+ 
