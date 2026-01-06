@@ -44,7 +44,7 @@ const Sun = ({handPos, isPinching,selectedPlanet,setSelectedPlanet,planetId,drag
   return (
     <div>
       <div ref = {planetRef}
-      className={`mercury rotate ${selectedPlanet === planetId ? 'selected': ' '}  `}
+      className={`sun rotate ${selectedPlanet === planetId ? 'selected': ' '}  `}
       style = {{
         position: 'absolute',
         left:position.x,

@@ -44,7 +44,7 @@ const Mars = ({handPos, isPinching,selectedPlanet,setSelectedPlanet,planetId,dra
   return (
     <div>
       <div ref = {planetRef}
-      className={`mercury rotate ${selectedPlanet === planetId ? 'selected': ' '}  `}
+      className={`mars rotate ${selectedPlanet === planetId ? 'selected': ' '}  `}
       style = {{
         position: 'absolute',
         left:position.x,
