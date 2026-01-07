@@ -20,7 +20,7 @@ const Venus = ({handPos, isPinching,selectedPlanet,setSelectedPlanet,planetId,dr
       Math.pow(handPos.x - planetCenter.x,2) + Math.pow(handPos.y - planetCenter.y,2) 
     )
 
-    if(isPinching && !wasPinching.current && distance<150){
+    if(isPinching && !wasPinching.current && distance<100){
       setSelectedPlanet(planetId)
       setDragOffset({
         x:handPos.x - position.x,
